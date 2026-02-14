@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi patico 🐥❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff5f9e, #ff9a9e);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        background: #fff;
+        width: 90%;
+        max-width: 900px;
+        padding: 30px;
+        border-radius: 20px;
+        display: flex;
+        gap: 30px;
+        box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    }
+
+    .text {
+        flex: 1;
+        color: #444;
+    }
+
+    .text h2 {
+        color: #e91e63;
+        margin-bottom: 15px;
+    }
+
+    .text p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .firma {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #e91e63;
+    }
+
+    .timer {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #d81b60;
+        font-size: 1.05rem;
+    }
+
+    .tree {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .trunk {
+        width: 40px;
+        height: 120px;
+        background: #8d6e63;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .hearts {
+        position: absolute;
+        bottom: 100px;
+        width: 260px;
+        height: 240px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .heart {
+        width: 20px;
+        height: 20px;
+        background: #ff1744;
+        transform: rotate(45deg);
+        margin: 4px;
+        position: relative;
+        animation: float 3s infinite ease-in-out;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: #ff1744;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: -10px;
+        top: 0;
+    }
+
+    @keyframes float {
+        0%,100% { transform: rotate(45deg) translateY(0); }
+        50% { transform: rotate(45deg) translateY(-8px); }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MÚSICA ROMÁNTICA -->
+<audio autoplay loop controls style="position:fixed; bottom:15px; left:15px;">
+    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_7b6c2a7c47.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <div class="text">
+        <h2>Para mi patico 🐥❤️</h2>
+
+        <p>
+            Si pudiera elegir un lugar seguro,<br>
+            sería contigo, mi patico 🐥.<br><br>
+
+            Me encanta abrazarte, cuidarte<br>
+            y decir con orgullo que soy tu novio.<br><br>
+
+            Me encanta que huelas a lorito 🐦,<br>
+            a pura panelita 🍯,<br>
+            porque ese olor eres tú<br>
+            y me hace sentir en casa.<br><br>
+
+            Cuanto más tiempo pasa,<br>
+            más te amo, mi patico.
+        </p>
+
+        <p class="firma">— Con todo mi amor, tu novio 💕</p>
+
+        <div class="timer" id="contador"></div>
+    </div>
+
+    <div class="tree">
+        <div class="hearts">
+            <script>
+                for (let i = 0; i < 80; i++) {
+                    document.write('<div class="heart"></div>');
+                }
+            </script>
+        </div>
+        <div class="trunk"></div>
+    </div>
+</div>
+
+<script>
+    // 💛 Desde el 21 de mayo de 2025
+    const inicio = new Date("2025-05-21T00:00:00");
+
+    function actualizarTiempo() {
+        const ahora = new Date();
+        let diff = ahora - inicio;
+
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff %= (1000 * 60 * 60 * 24);
+
+        const horas = Math.floor(diff / (1000 * 60 * 60));
+        diff %= (1000 * 60 * 60);
+
+        const minutos = Math.floor(diff / (1000 * 60));
+        const segundos = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("contador").innerHTML =
+            `Nuestro amor comenzó hace…<br>
+            ${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos 💖`;
+    }
+
+    setInterval(actualizarTiempo, 1000);
+    actualizarTiempo();
+</script>
+
+</body>
+</html>
