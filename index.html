@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi patico 🐥💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(270deg,#ff6fa5,#ffc0d9,#ff8fb8);
+  background-size:600% 600%;
+  animation:fondo 10s infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+@keyframes fondo{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.tarjeta{
+  background:white;
+  width:90%;
+  max-width:900px;
+  border-radius:25px;
+  padding:35px;
+  box-shadow:0 25px 50px rgba(0,0,0,.3);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  position:relative;
+  z-index:2;
+}
+
+h1{color:#ff2f6f}
+
+.texto{line-height:1.7;font-size:17px}
+
+.firma,.contador{
+  margin-top:15px;
+  color:#ff2f6f;
+  font-weight:bold;
+}
+
+.boton{
+  margin-top:20px;
+  padding:15px 30px;
+  border:none;
+  border-radius:40px;
+  background:#ff2f6f;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+.boton:hover{background:#e0265f}
+
+.paticos{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:90px;
+  gap:20px;
+}
+
+.beso{
+  font-size:50px;
+  animation:latido 1.2s infinite;
+  cursor:pointer;
+}
+
+@keyframes latido{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.4)}
+}
+
+.besar{
+  animation:besar .8s infinite;
+}
+@keyframes besar{
+  0%{transform:translateX(0)}
+  50%{transform:translateX(10px)}
+  100%{transform:translateX(0)}
+}
+
+.corazon{
+  position:absolute;
+  font-size:24px;
+  animation:subir 6s infinite;
+  opacity:0;
+}
+@keyframes subir{
+  0%{bottom:-10px;opacity:0}
+  20%{opacity:1}
+  100%{bottom:120%;opacity:0}
+}
+
+.secreto{
+  display:none;
+  margin-top:15px;
+  font-size:16px;
+  color:#ff2f6f;
+}
+</style>
+</head>
+
+<body>
+
+<!-- corazones infinitos -->
+<script>
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="corazon";
+  c.style.left=Math.random()*100+"%";
+  c.innerHTML=["💖","💕","💗","💘"][Math.floor(Math.random()*4)];
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),6000);
+},500);
+</script>
+
+<div class="tarjeta">
+
+<div>
+<h1>Para mi patico 🐥💖</h1>
+
+<div class="texto">
+Si pudiera elegir un lugar seguro,<br>
+sería contigo, mi patico 🐥.<br><br>
+
+Me encanta abrazarte, cuidarte<br>
+y decir con orgullo que soy tu novio.<br><br>
+
+Me encanta que huelas a lorito 🦜,<br>
+a pura panelita 🍯,<br>
+porque ese olor eres tú<br>
+y me hace sentir en casa.<br><br>
+
+Cuanto más tiempo pasa,<br>
+más te amo, mi patico.
+</div>
+
+<div class="firma">
+— Con todo mi amor, tu novio 💕
+</div>
+
+<div class="contador" id="contador"></div>
+
+<button class="boton" onclick="playLove()">
+🎶 Contigo, mi patico
+</button>
+
+<div class="secreto" id="secreto">
+💖 Si tocas este corazón es porque ya somos para siempre 🐥
+</div>
+
+<audio id="musica" loop>
+  <source src="contigo.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="paticos" id="paticos">
+🐥 <span class="beso" onclick="mostrarSecreto()">💋</span> 🐥
+</div>
+
+</div>
+
+<script>
+const inicio=new Date("2025-05-21T00:00:00");
+
+function contador(){
+  let d=new Date()-inicio;
+  const dias=Math.floor(d/86400000);
+  d%=86400000;
+  const h=Math.floor(d/3600000);
+  d%=3600000;
+  const m=Math.floor(d/60000);
+  const s=Math.floor(d/1000);
+  document.getElementById("contador").innerHTML=
+  `Nuestro amor comenzó hace…<br>
+  ${dias} días ${h} horas ${m} minutos ${s} segundos 💞`;
+}
+setInterval(contador,1000);contador();
+
+function playLove(){
+  document.getElementById("musica").play();
+  document.getElementById("paticos").classList.add("besar");
+}
+
+function mostrarSecreto(){
+  document.getElementById("secreto").style.display="block";
+}
+</script>
+
+</body>
+</html>
